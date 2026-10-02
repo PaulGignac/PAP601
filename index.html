@@ -360,6 +360,18 @@
   .closing p{margin:0 0 12px; font-size:15px; line-height:1.6; color:#C6D6D1}
   .closing ul{margin:0; padding-left:20px; color:#C6D6D1; font-size:14.5px; line-height:1.6}
   .closing li{margin-bottom:5px}
+  .closing-link{
+    display:flex; align-items:center; gap:14px; text-decoration:none; margin-top:16px;
+    background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.14); border-radius:13px;
+    padding:14px 18px; color:#E7EFEC; transition:background .15s ease, border-color .15s ease;
+  }
+  .closing-link:hover{background:rgba(255,255,255,.1); border-color:rgba(255,255,255,.26)}
+  .closing-link .cl-ico{
+    flex:0 0 34px; height:34px; border-radius:50%; background:var(--jade); color:#fff;
+    display:grid; place-items:center; font-size:15px;
+  }
+  .closing-link .cl-txt{flex:1; min-width:0; font-size:14.5px; line-height:1.4}
+  .closing-link .cl-go{font-family:var(--mono); font-size:11px; color:#9FD3C8; letter-spacing:.06em; flex:0 0 auto}
 
   .howto{margin-top:20px; background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:18px 22px; box-shadow:var(--shadow)}
   .howto .ht-k{font-family:var(--mono); font-size:11px; letter-spacing:.13em; text-transform:uppercase; color:var(--jade); margin-bottom:8px}
@@ -647,13 +659,10 @@ const REGIONS = [
         n("Cuneiforms",[n("medial cuneiform"),n("intermediate cuneiform"),n("lateral cuneiform")]),
         n("metatarsals"),n("phalanges")
       ]},
-      { type:"Muscle", items:[ n("flexor digitorum brevis"),n("abductor hallucis"),n("abductor digiti minimi"),n("quadratus plantae"),
-        n("Flexor hallucis brevis",[n("medial head",null,{key:"flexor-hallucis-brevis-medial-head"}),n("lateral head",null,{key:"flexor-hallucis-brevis-lateral-head"})],{org:true}),
-        n("Adductor hallucis",[n("oblique head",null,{key:"adductor-hallucis-oblique-head"}),n("transverse head",null,{key:"adductor-hallucis-transverse-head"})],{org:true}),
-        n("plantar interossei"),n("dorsal interossei of the foot") ]},
+      { type:"Muscle", items:[ n("flexor digitorum brevis"),n("abductor hallucis"),n("abductor digiti minimi"),n("quadratus plantae"),n("flexor hallucis brevis"),n("adductor hallucis"),n("flexor digiti minimi brevis") ]},
       { type:"Connective tissue", items:[ n("plantar aponeurosis"),n("tibialis posterior tendon",null,{key:"tibialis-posterior-tendon"}),n("fibularis longus tendon"),n("fibularis brevis tendon") ]},
-      { type:"Artery", items:[ n("posterior tibial artery"),n("lateral plantar artery"),n("medial plantar artery"),n("common plantar digital arteries"),n("proper plantar digital arteries") ]},
-      { type:"Nerve", items:[ n("posterior tibial nerve"),n("lateral plantar nerve"),n("medial plantar nerve"),n("common plantar digital nerves"),n("proper plantar digital nerves") ]}
+      { type:"Artery", items:[ n("posterior tibial artery"),n("lateral plantar artery"),n("medial plantar artery") ]},
+      { type:"Nerve", items:[ n("posterior tibial nerve"),n("lateral plantar nerve"),n("medial plantar nerve") ]}
     ],
     mcq:{
       stem:"In the hand, the ulnar nerve supplies most small intrinsic muscles and the median nerve only a few. Does that same pattern hold in the sole of the foot? As you work through this, consider the different directions the upper and lower limbs rotate during embryonic development.",
@@ -732,12 +741,12 @@ const TIPS={
   "patella":"The sesamoid bone within the quadriceps tendon, forming the kneecap.",
   "tibia":"The large weight-bearing bone of the leg, medial to the fibula.",
   "fibula":"The slender lateral bone of the leg, carrying almost no body weight.",
+  "tibial-tuberosity":"The raised oval on the front of the upper tibia where the patellar tendon attaches.",
   "tibia-medial-condyle":"The larger, more medial of the tibia's two proximal condyles, forming the medial part of the knee joint surface.",
   "tibia-lateral-condyle":"The lateral of the tibia's two proximal condyles, forming the lateral part of the knee joint surface.",
   "intercondylar-eminence":"The ridge between the tibial condyles, giving attachment to the cruciate ligaments and menisci.",
-  "tibial-tuberosity":"The raised oval on the front of the upper tibia where the patellar tendon attaches.",
   "head-of-fibula":"The knob at the top of the fibula, palpable just below and behind the lateral knee.",
-  "neck-of-fibula":"The narrowed segment just below the head, where the common fibular nerve winds around the bone \\u2014 and can be injured.",
+  "neck-of-fibula":"The narrowed segment just below the head, where the common fibular nerve winds around the bone \u2014 and can be injured.",
   "biceps-femoris":"The most lateral hamstring; its tendon borders the outside of the popliteal fossa.",
   "biceps-femoris-long-head":"The larger head, arising from the ischial tuberosity alongside semitendinosus; supplied by the tibial part of the sciatic nerve.",
   "biceps-femoris-short-head":"Arises lower down, from the linea aspera of the femur; the only hamstring head that crosses just one joint, supplied by the fibular part of the sciatic nerve.",
@@ -777,15 +786,10 @@ const TIPS={
   "flexor-digitorum-brevis":"The most superficial muscle of the sole, lying directly deep to the plantar aponeurosis.",
   "abductor-hallucis":"Forms the medial border of the sole, running from the calcaneus to the great toe.",
   "abductor-digiti-minimi":"Forms the lateral border of the sole, running from the calcaneus to the little toe.",
+  "flexor-digiti-minimi-brevis":"A short muscle along the fifth metatarsal, deep to abductor digiti minimi, flexing the little toe at the metatarsophalangeal joint.",
   "quadratus-plantae":"A flat, squarish muscle in the second layer that straightens the pull of the flexor digitorum longus tendon.",
   "flexor-hallucis-brevis":"A short muscle to the great toe alone, split into two bellies around the flexor hallucis longus tendon.",
-  "flexor-hallucis-brevis-medial-head":"The medial belly of flexor hallucis brevis, lying alongside abductor hallucis.",
-  "flexor-hallucis-brevis-lateral-head":"The lateral belly of flexor hallucis brevis, lying alongside adductor hallucis.",
   "adductor-hallucis":"Has two heads \u2014 oblique and transverse \u2014 that converge on the great toe from different directions.",
-  "adductor-hallucis-oblique-head":"The larger, more proximal head, running obliquely from the bases of the lateral metatarsals toward the great toe.",
-  "adductor-hallucis-transverse-head":"The smaller, deep head, running transversely across the heads of the lateral metatarsals to join the oblique head.",
-  "plantar-interossei":"Three single-headed muscles in the sole's deepest layer that adduct the lateral three toes toward the second toe.",
-  "dorsal-interossei-of-the-foot":"Four two-headed muscles between the metatarsals that abduct the toes away from the second toe.",
   "plantar-aponeurosis":"The thick band of fascia running from the calcaneus to the toes, supporting the arch of the foot.",
   "tibialis-posterior-tendon":"The tendon of tibialis posterior, curving behind the medial malleolus to insert mainly on the navicular.",
   "fibularis-longus-tendon":"The tendon of fibularis longus, crossing beneath the cuboid to reach the base of the first metatarsal on the far side of the sole.",
@@ -793,13 +797,9 @@ const TIPS={
   "posterior-tibial-artery":"The tibial nerve's companion artery, dividing here into the medial and lateral plantar arteries just behind the medial malleolus.",
   "lateral-plantar-artery":"The larger of the two terminal branches of the posterior tibial artery, running toward the lateral sole.",
   "medial-plantar-artery":"The smaller terminal branch of the posterior tibial artery, running along the medial sole.",
-  "common-plantar-digital-arteries":"Branches of the plantar arteries running toward the toe clefts, each splitting into two proper plantar digital arteries.",
-  "proper-plantar-digital-arteries":"The terminal branches of the common plantar digital arteries, running along each side of the toes.",
   "posterior-tibial-nerve":"The name the tibial nerve takes as it passes behind the medial malleolus, where it splits into the medial and lateral plantar nerves.",
   "lateral-plantar-nerve":"Supplies most of the small muscles of the sole \u2014 the opposite pattern from the hand, where the equivalent nerve supplies fewer muscles.",
-  "medial-plantar-nerve":"Supplies only a few muscles medially, plus sensation to the medial sole and toes \u2014 again, opposite the hand's pattern.",
-  "common-plantar-digital-nerves":"Branches of the plantar nerves running toward the toe clefts before splitting into proper plantar digital nerves.",
-  "proper-plantar-digital-nerves":"The terminal branches of the common plantar digital nerves, running along each side of the toes."
+  "medial-plantar-nerve":"Supplies only a few muscles medially, plus sensation to the medial sole and toes \u2014 again, opposite the hand's pattern."
 };
 
 /* Original etymology notes written for this activity. Anatomical names are
@@ -1017,7 +1017,7 @@ const ROLE_SLOTS = ["coord","diss","atlas","anat","anat"];
    students submit straight into a Google Sheet instead of downloading a
    CSV. Leave this blank and Submit will fall back to a CSV download with
    an on-screen heads-up. */
-const SUBMIT_ENDPOINT = "";
+const SUBMIT_ENDPOINT = "https://script.google.com/macros/s/AKfycbzYOpsOcEhHeZGTyM8SzIy9P_7Hh_sOf0NXSDFzEUL6v1UFn6nO8-5Y-uHCALX-l0p4Uw/exec";
 
 /* ===================== STATE ===================== */
 const LS="caselab_postlowerlimb_v1";  /* set LABID per lab so progress does not collide */
@@ -1074,6 +1074,73 @@ function regionEntries(ri){
 }
 const KEY_NAME={};
 REGIONS.forEach((r,ri)=>r.groups.forEach(g=>{const w=items=>items.forEach(it=>{if(!(it.key in KEY_NAME)) KEY_NAME[it.key]=it.name; if(it.children) w(it.children);}); w(g.items);}));
+function structsHTML(ri){
+  const reg=REGIONS[ri], collapsed=!!state.collapsed[ri];
+  let out='';
+  reg.groups.forEach(g=>{
+    let rows='';
+    const cat=CAT_OF(g.type);
+    const walk=(items,d)=>items.forEach(it=>{
+      const rec=state.seen[it.key];
+      const seen=!!rec;
+      let prev='';
+      if(seen&&rec.ri!==undefined&&rec.ri!==ri) prev='<span class="prevmark">(checked in '+esc(REGIONS[rec.ri].title)+')</span>';
+      const lab=it.org?'<span class="slabel"><span class="sname"><span class="org">'+esc(it.name)+'</span> <span class="deg">\u00B0</span></span>'+prev+'</span>'
+                      :'<span class="slabel"><span class="sname">'+esc(it.name)+'</span>'+prev+'</span>';
+      const tip=TIPS[it.key]||'';
+      rows+='<div class="srow cat-'+cat+'" style="padding-left:'+(4+d*18)+'px">'+
+        '<button class="sline'+(seen?' seen':'')+'" data-sk="'+it.key+'"><span class="sbox">'+CHK+'</span>'+lab+'</button>'+
+        (tip?'<button class="shelp" data-tipfor="'+it.key+'" aria-label="How to identify '+esc(it.name)+'">?</button><div class="stip"><b>'+esc(it.name)+'</b><br>'+esc(tip)+'</div>':'')+
+        '</div>';
+      if(it.children) walk(it.children,d+1);
+    });
+    walk(g.items,0);
+    const tnote='';
+    out+='<div class="stype-group"><div class="stype cat-'+cat+'"><span class="swatch"></span>'+g.type+'</div>'+tnote+rows+'</div>';
+  });
+  const ks=regionKeys(ri), sn=ks.filter(k=>state.seen[k]).length;
+  return '<section class="rstructs'+(collapsed?' collapsed':'')+'" id="rstructs">'+
+   '<div class="rstructs-head"><div><div class="lbl">Structures in this region'+
+   '<button class="helpq" id="helpQ" aria-label="What counts as a structure?">?<span class="helptip">A <b>structure</b> is any named anatomical entity you can point to on the prosection \u2014 a muscle, nerve, artery, vein, bone, bony landmark, ligament, or space.</span></button>'+
+   '</div><div class="sub">Tick each one as you identify it. Checks carry across the whole activity.</div>'+
+   '<div class="legend">'+['artery','vein','nerve','muscle','bone','connective','other'].map(c=>'<span class="lg cat-'+c+'"><span class="swatch"></span>'+CAT_LABEL[c]+'</span>').join('')+'</div></div>'+
+   '<div class="rstructs-meta"><div class="meterbar"><span id="rFill" style="width:'+Math.round(sn/ks.length*100)+'%"></span></div>'+
+   '<div class="meter-txt" id="rTxt">'+sn+' / '+ks.length+'</div>'+
+   '<button class="icon-btn" id="rCol" aria-label="Collapse">'+(collapsed?'\u25BE':'\u25B4')+'</button></div></div>'+
+   '<div class="rstructs-body'+(reg.groups.length<2?' onecol':'')+'">'+out+'</div></section>';
+}
+function videoHTML(v){
+  if(!v) return '';
+  const list = Array.isArray(v) ? v : [v];
+  const cards = list.filter(x=>x&&x.url).map(x=>
+    '<a class="vidcard" href="'+x.url+'" target="_blank" rel="noopener">'+
+    '<span class="vplay">\u25B6</span>'+
+    '<span class="vtxt"><span class="vk">Dissection overview \u00B7 thumbroll Medical</span>'+
+    '<span class="vt">'+esc(x.title||'Watch the dissection for this region')+'</span></span>'+
+    '<span class="vgo">Open \u2197</span></a>').join('');
+  if(!cards) return '';
+  return cards+'<div class="vnote">thumbroll Medical is a free anatomy app that walks through how these prosections were made.</div>';
+}
+function figHTML(caption,ri){
+  return '<div class="figbox"><div class="figsvg">'+regionSVG(ri)+'</div>'+
+    '<div class="figcap">'+esc(caption)+'</div></div>';
+}
+function grantsHTML(pages,note,label){
+  return '<div class="grants"><div><div class="gl">'+(label||'Grant\u2019s Dissector')+'</div><div class="gp">pp. '+pages+'</div></div><div class="gt">'+esc(note)+'</div></div>';
+}
+function mcqHTML(mcq,key){
+  const rec=state.answered[key], solved=!!(rec&&rec.solved), rev=(rec&&rec.revealed)||[];
+  const opts=mcq.options.map((o,i)=>{
+    const isR=rev.includes(i), cls=isR?(o.correct?'correct':'incorrect'):'', dim=(solved&&!isR)?'dimmed':'';
+    return '<button class="opt '+cls+' '+dim+'" data-key="'+key+'" data-idx="'+i+'">'+
+      '<div class="opt-row"><span class="opt-key">'+String.fromCharCode(65+i)+'</span><span class="opt-text">'+esc(o.t)+'</span></div>'+
+      '<div class="opt-fb"><div class="opt-fb-inner"><p><span class="verdict">'+(o.correct?'Correct':'Not quite')+'</span><br>'+esc(o.fb)+'</p></div></div></button>';
+  }).join('');
+  const st=solved?'Solved \u2014 explore the other options to see why they don\u2019t fit.':'Choose an answer. Every option explains itself.';
+  return '<section class="mcq"><div class="mcq-label">Case File Questions</div><p class="mcq-stem">'+esc(mcq.stem)+'</p>'+
+    '<div class="opts">'+opts+'</div><div class="mcq-status '+(solved?'solved':'')+'" data-status="'+key+'">'+st+'</div></section>';
+}
+
 /* ===================== TEAM COLOR / NAME ===================== */
 /* Hues chosen to stay clear of the anatomical category colors (artery red,
    vein blue, nerve dark-yellow, muscle brown, bone black, connective gray,
@@ -1209,79 +1276,6 @@ function composeTeamName(){
   state.teamName = parts.join(' ');
   return state.teamName;
 }
-
-function structsHTML(ri){
-  const reg=REGIONS[ri], collapsed=!!state.collapsed[ri];
-  let out='';
-  reg.groups.forEach(g=>{
-    let rows='';
-    const cat=CAT_OF(g.type);
-    const walk=(items,d)=>items.forEach(it=>{
-      const rec=state.seen[it.key];
-      const seen=!!rec;
-      let prev='';
-      if(seen&&rec.ri!==undefined&&rec.ri!==ri) prev='<span class="prevmark">(checked in '+esc(REGIONS[rec.ri].title)+')</span>';
-      const lab=it.org?'<span class="slabel"><span class="sname"><span class="org">'+esc(it.name)+'</span> <span class="deg">\u00B0</span></span>'+prev+'</span>'
-                      :'<span class="slabel"><span class="sname">'+esc(it.name)+'</span>'+prev+'</span>';
-      const tip=TIPS[it.key]||'';
-      rows+='<div class="srow cat-'+cat+'" style="padding-left:'+(4+d*18)+'px">'+
-        '<button class="sline'+(seen?' seen':'')+'" data-sk="'+it.key+'"><span class="sbox">'+CHK+'</span>'+lab+'</button>'+
-        (tip?'<button class="shelp" data-tipfor="'+it.key+'" aria-label="How to identify '+esc(it.name)+'">?</button><div class="stip"><b>'+esc(it.name)+'</b><br>'+esc(tip)+'</div>':'')+
-        '</div>';
-      if(it.children) walk(it.children,d+1);
-    });
-    walk(g.items,0);
-    const tnote='';
-    out+='<div class="stype-group"><div class="stype cat-'+cat+'"><span class="swatch"></span>'+g.type+'</div>'+tnote+rows+'</div>';
-  });
-  const ks=regionKeys(ri), sn=ks.filter(k=>state.seen[k]).length;
-  return '<section class="rstructs'+(collapsed?' collapsed':'')+'" id="rstructs">'+
-   '<div class="rstructs-head"><div><div class="lbl">Structures in this region'+
-   '<button class="helpq" id="helpQ" aria-label="What counts as a structure?">?<span class="helptip">A <b>structure</b> is any named anatomical entity you can point to on the prosection \u2014 a muscle, nerve, artery, vein, bone, bony landmark, ligament, or space.</span></button>'+
-   '</div><div class="sub">Tick each one as you identify it. Checks carry across the whole activity.</div>'+
-   '<div class="legend">'+['artery','vein','nerve','muscle','bone','connective','other'].map(c=>'<span class="lg cat-'+c+'"><span class="swatch"></span>'+CAT_LABEL[c]+'</span>').join('')+'</div></div>'+
-   '<div class="rstructs-meta"><div class="meterbar"><span id="rFill" style="width:'+Math.round(sn/ks.length*100)+'%"></span></div>'+
-   '<div class="meter-txt" id="rTxt">'+sn+' / '+ks.length+'</div>'+
-   '<button class="icon-btn" id="rCol" aria-label="Collapse">'+(collapsed?'\u25BE':'\u25B4')+'</button></div></div>'+
-   '<div class="rstructs-body'+(reg.groups.length<2?' onecol':'')+'">'+out+'</div></section>';
-}
-function videoHTML(v){
-  if(!v) return '';
-  const list = Array.isArray(v) ? v : [v];
-  const cards = list.filter(x=>x&&x.url).map(x=>
-    '<a class="vidcard" href="'+x.url+'" target="_blank" rel="noopener">'+
-    '<span class="vplay">\u25B6</span>'+
-    '<span class="vtxt"><span class="vk">Dissection overview \u00B7 thumbroll Medical</span>'+
-    '<span class="vt">'+esc(x.title||'Watch the dissection for this region')+'</span></span>'+
-    '<span class="vgo">Open \u2197</span></a>').join('');
-  if(!cards) return '';
-  return cards+'<div class="vnote">thumbroll Medical is a free anatomy app that walks through how these prosections were made.</div>';
-}
-function figHTML(caption,ri){
-  return '<div class="figbox"><div class="figsvg">'+regionSVG(ri)+'</div>'+
-    '<div class="figcap">'+esc(caption)+'</div></div>';
-}
-const TEXTBOOK_URL = "https://uarizona.elentra.cloud/community/pap_601:inclusive_access";
-function grantsHTML(pages,note,label){
-  return '<a class="grants" href="'+TEXTBOOK_URL+'" target="_blank" rel="noopener">'+
-    '<div><div class="gl">'+(label||'Grant\u2019s Dissector')+'</div><div class="gp">pp. '+pages+'</div></div>'+
-    '<div class="gt">'+esc(note)+'</div>'+
-    '<div class="ga-go">Open textbook \u2197</div>'+
-    '</a>';
-}
-function mcqHTML(mcq,key){
-  const rec=state.answered[key], solved=!!(rec&&rec.solved), rev=(rec&&rec.revealed)||[];
-  const opts=mcq.options.map((o,i)=>{
-    const isR=rev.includes(i), cls=isR?(o.correct?'correct':'incorrect'):'', dim=(solved&&!isR)?'dimmed':'';
-    return '<button class="opt '+cls+' '+dim+'" data-key="'+key+'" data-idx="'+i+'">'+
-      '<div class="opt-row"><span class="opt-key">'+String.fromCharCode(65+i)+'</span><span class="opt-text">'+esc(o.t)+'</span></div>'+
-      '<div class="opt-fb"><div class="opt-fb-inner"><p><span class="verdict">'+(o.correct?'Correct':'Not quite')+'</span><br>'+esc(o.fb)+'</p></div></div></button>';
-  }).join('');
-  const st=solved?'Solved \u2014 explore the other options to see why they don\u2019t fit.':'Choose an answer. Every option explains itself.';
-  return '<section class="mcq"><div class="mcq-label">Case File Questions</div><p class="mcq-stem">'+esc(mcq.stem)+'</p>'+
-    '<div class="opts">'+opts+'</div><div class="mcq-status '+(solved?'solved':'')+'" data-status="'+key+'">'+st+'</div></section>';
-}
-
 
 function groupSelectOptions(){
   const opts=['<option value="">Choose\u2026</option>'];
@@ -1626,7 +1620,11 @@ function showClosing(){
     'differ from donor to donor, and seeing several bodies is the only way to learn what \u201Cnormal\u201D really spans.</p>'+
     '<ul><li>Compare the branching of the deep artery of the thigh between donors.</li>'+
     '<li>Look for accessory muscle slips and differences in tendon insertions.</li>'+
-    '<li>Note where the common fibular nerve divides relative to the fibular neck in each donor.</li></ul>';
+    '<li>Note where the common fibular nerve divides relative to the fibular neck in each donor.</li></ul>'+
+    '<a class="closing-link" href="https://radiopaedia.org/cases/achilles-tendon-tear-8?lang=us" target="_blank" rel="noopener">'+
+    '<span class="cl-ico">→</span>'+
+    '<span class="cl-txt">Tap to see more about this Achilles tendon tear case from Radiopaedia.</span>'+
+    '<span class="cl-go">Open ↗</span></a>';
   const sb=document.querySelector('.submitbox');
   sb.parentNode.insertBefore(box,sb.nextSibling);
   try{ box.scrollIntoView({behavior:'smooth',block:'center'}); }catch(e){}
