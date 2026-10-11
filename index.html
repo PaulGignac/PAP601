@@ -684,7 +684,7 @@ const REGIONS = [
   },
   /* ---------- 2 ---------- */
   {
-    title:"Shoulder & Posterior Arm", pages:"29\u201335",
+    title:"Shoulder & Posterior Arm", pages:"14\u201316, 29\u201335",
     pagesNote:"Work through the scapular muscles and their innervation, then follow the axillary nerve into the quadrangular space and the radial nerve as it enters the arm.",
     fig:"Posterior shoulder and arm: scapular muscles and the radial nerve",
     groups:[
@@ -705,9 +705,9 @@ const REGIONS = [
         n("triceps brachii",null,{key:"triceps-brachii"})
       ]},
       { type:"Nerve", items:[
-        n("spinal accessory nerve (CN XI)",null,{key:"spinal-accessory-nerve"}),
+        n("Spinal accessory nerve (CN XI) (motor) + C3\u2013C4 (proprioception)",null,{key:"spinal-accessory-nerve"}),
         n("dorsal scapular nerve",null,{key:"dorsal-scapular-nerve"}),
-        n("long thoracic nerve",null,{key:"long-thoracic-nerve"}),
+        n("thoracodorsal nerve",null,{key:"thoracodorsal-nerve"}),
         n("suprascapular nerve",null,{key:"suprascapular-nerve"}),
         n("axillary nerve",null,{key:"axillary-nerve"}),
         n("radial nerve",null,{key:"radial-nerve"})
@@ -820,7 +820,7 @@ const REGIONS = [
 ];
 
 const SYNTH = {
-  title:"Bring it together", pages:"Review 29\u201376",
+  title:"Bring it together", pages:"Review 14\u201376",
   lede:"You have traced the anatomy of every region. Now name the single lesion that ties Sarah's findings together, then write the chain out in your own words.",
   mcq:{
     stem:"Which single lesion best explains all of Sarah's findings together?",
@@ -890,7 +890,7 @@ const TIPS={
   "triceps-brachii":"The large muscle filling the posterior arm, its three heads converging on the olecranon.",
   "spinal-accessory-nerve":"Descends across the posterior triangle of the neck to supply trapezius; look for it entering the muscle's deep surface.",
   "dorsal-scapular-nerve":"Pierces scalenus medius and runs down deep to the rhomboids and levator scapulae, which it supplies.",
-  "long-thoracic-nerve":"Runs down the lateral chest wall on serratus anterior, well anterior to the scapula.",
+  "thoracodorsal-nerve":"Arises from the posterior cord and runs down the posterior axillary wall with the thoracodorsal artery to enter the deep surface of latissimus dorsi.",
   "suprascapular-nerve":"Passes through the suprascapular notch to reach supraspinatus, then curves around the scapular spine to infraspinatus.",
   "radial-nerve":"Emerges from the posterior cord and spirals around the humeral shaft in the radial groove, deep to the lateral head of triceps.",
   "axillary-nerve":"Arises from the posterior cord and leaves the axilla through the quadrangular space, alongside the posterior circumflex humeral artery, to wrap the surgical neck of the humerus.",
@@ -1466,7 +1466,7 @@ const ROLE_SLOTS = ["coord","diss","atlas","anat","anat"];
 const SUBMIT_ENDPOINT = "https://script.google.com/macros/s/AKfycby1g4qbKV91grymih-LWSr3asWQAdcoziQexKB8TyUEBZa_gkFKw1qQL2tanoiakesgaw/exec";
 
 /* ===================== STATE ===================== */
-const LS="caselab_postulimb_v4";  /* set LABID per lab so progress does not collide */
+const LS="caselab_postulimb_v5";  /* set LABID per lab so progress does not collide */
 let state={step:0,seen:{},answered:{},notes:{},notebook:"",group:"",collapsed:{},highlights:{},roles:null,teamColor:"",teamDescriptor:"",teamStructure:"",teamName:"",teamStructPool:null};
 try{const r=localStorage.getItem(LS); if(r) state=Object.assign(state,JSON.parse(r));}catch(e){}
 function save(){try{localStorage.setItem(LS,JSON.stringify(state));}catch(e){}}
