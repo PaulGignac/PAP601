@@ -682,13 +682,13 @@ const REGIONS = [
     lede:"Before you open the axilla, get oriented to the plexus you are about to trace. Every nerve carries fibers from particular spinal cord levels. Click a level to see every nerve it travels in, or click any nerve, in the diagram or the list, to trace it back to the spinal cord. Pathways shaded yellow are the ones that supply the anterior compartments of the arm, forearm, and hand covered in this lab.",
     groups:[],
     mcq:{
-      stem:"Recall RUM LOAF from class. RUM maps three nerves onto three thumb movements: the Radial nerve abducts the thumb (abductor pollicis longus), the Ulnar nerve adducts it (adductor pollicis), and the Median nerve opposes it (opponens pollicis). LOAF lists the hand muscles the median nerve supplies: Lumbricals 1 and 2, Opponens pollicis, Abductor pollicis brevis, and Flexor pollicis brevis (superficial head). Michelle\u2019s weak opposition points to the M of RUM. Using the schematic, which spinal cord levels supply the thenar muscles of LOAF?",
+      stem:"Recall RUM LOAF from class. RUM maps three nerves onto three thumb movements: the Radial nerve abducts the thumb (abductor pollicis longus), the Ulnar nerve adducts it (adductor pollicis), and the Median nerve opposes it (opponens pollicis). LOAF lists the hand muscles the median nerve supplies: Lumbricals 1 and 2, Opponens pollicis, Abductor pollicis brevis, and Flexor pollicis brevis. In the schematic, the three thenar muscles of LOAF (the O, A, and F) are listed together on one branch: the recurrent (thenar) branch of the median nerve. The lumbricals are listed separately, on the median nerve itself. Click the recurrent (thenar) branch and trace its stripes back to the roots. Which spinal cord levels supply the thenar muscles that oppose Michelle\u2019s thumb?",
       options:[
         {t:"C5\u2013C6",correct:false,fb:"Those levels run through the superior trunk to the shoulder and anterior arm. Click the recurrent branch and follow its stripes back to the roots."},
         {t:"C6\u2013C7",correct:false,fb:"Those levels carry much of the sensation from the lateral digits, but the motor fibers to the OAF muscles arrive on different levels."},
         {t:"C8\u2013T1",correct:true,fb:"C8 and T1 run through the inferior trunk, its anterior division, and the medial cord, then join the median nerve through its medial root. Now compare the levels carrying sensation from the thumb, index, and middle fingers. Ask yourself where in the limb a motor pathway and a sensory pathway could both be hit by one lesion."},
         {t:"C7\u2013C8",correct:false,fb:"Close, but follow the stripes all the way back to the roots."},
-        {t:"C5\u2013T1",correct:false,fb:"That range describes the median nerve as a whole. A single branch carries only a subset of those levels."}
+        {t:"C5\u2013T1",correct:false,fb:"That range belongs to the median nerve as a whole, the line where the lumbricals are listed. The recurrent (thenar) branch carries only a subset of those levels."}
       ]
     }
   },
@@ -722,7 +722,6 @@ const REGIONS = [
     fig:"Root of the neck, pectoral region, and axilla: vessels and the brachial plexus",
     groups:[
       { type:"Muscle", items:[
-        n("sternocleidomastoid",null,{key:"sternocleidomastoid"}),
         n("omohyoid",null,{key:"omohyoid"}),
         n("scalenes",null,{key:"scalenes"}),
         n("pectoralis major",null,{key:"pectoralis-major"}),
@@ -748,7 +747,6 @@ const REGIONS = [
       { type:"Vein", items:[
         n("subclavian vein",null,{key:"subclavian-vein"}),
         n("axillary vein",null,{key:"axillary-vein"}),
-        n("external jugular vein",null,{key:"external-jugular-vein"}),
         n("cephalic vein",null,{key:"cephalic-vein"})
       ]},
       { type:"Nerve · Brachial plexus roots", items:[
@@ -892,7 +890,10 @@ const REGIONS = [
       { type:"Muscle", items:[
         n("flexor pollicis brevis",null,{key:"flexor-pollicis-brevis"}),
         n("opponens pollicis",null,{key:"opponens-pollicis"}),
-        n("adductor pollicis",null,{key:"adductor-pollicis"}),
+        n("adductor pollicis",[
+          n("transverse head of adductor pollicis",null,{key:"adductor-pollicis-transverse"}),
+          n("oblique head of adductor pollicis",null,{key:"adductor-pollicis-oblique"})
+        ],{key:"adductor-pollicis"}),
         n("abductor digiti minimi",null,{key:"abductor-digiti-minimi"}),
         n("lumbricals",null,{key:"lumbricals"}),
         n("palmar interossei",null,{key:"palmar-interossei"})
@@ -1063,6 +1064,8 @@ const TIPS={
   "anterior-interosseous-nerve":"Leaves the median nerve near pronator teres and runs down the front of the interosseous membrane; purely motor to FPL, the lateral half of FDP, and pronator quadratus.",
   "flexor-pollicis-brevis":"A thenar muscle lying medial to abductor pollicis brevis, flexing the thumb at the metacarpophalangeal joint.",
   "opponens-pollicis":"Lies deep to the other thenar muscles along the first metacarpal; it rotates the thumb to face the fingers.",
+  "adductor-pollicis-transverse":"The distal, fan-shaped head arising from the palmar shaft of the third metacarpal; its fibers run horizontally across the palm to the base of the thumb's proximal phalanx.",
+  "adductor-pollicis-oblique":"The proximal head arising from the capitate and the bases of the second and third metacarpals; its fibers run obliquely to join the transverse head at the thumb. The radial artery passes between the two heads into the palm.",
   "adductor-pollicis":"A deep fan-shaped muscle in the first web space, pulling the thumb toward the palm; supplied by the ulnar nerve, not the median.",
   "abductor-digiti-minimi":"The most medial hypothenar muscle, running from the pisiform to the little finger.",
   "lumbricals":"Four small worm-like muscles arising from the FDP tendons in the palm, flexing the MCP joints and extending the IP joints.",
@@ -1096,6 +1099,8 @@ const INNERV={
   "flexor-pollicis-brevis":"Recurrent (thenar) branch of the median n.",
   "opponens-pollicis":"Recurrent (thenar) branch of the median n.",
   "adductor-pollicis":"Deep branch of the ulnar n.",
+  "adductor-pollicis-transverse":"Deep branch of the ulnar n.",
+  "adductor-pollicis-oblique":"Deep branch of the ulnar n.",
   "abductor-digiti-minimi":"Deep branch of the ulnar n.",
   "lumbricals":"Median n. (lateral two); deep branch of the ulnar n. (medial two)",
   "palmar-interossei":"Deep branch of the ulnar n."
